@@ -1,6 +1,6 @@
 import AppLovinSDK
 import Foundation
-@_implementationOnly import VoodooAdn
+import VoodooAdn
 import UIKit
 
 final class ADNMANativeAd: MANativeAd {
