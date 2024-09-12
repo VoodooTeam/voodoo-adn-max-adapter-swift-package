@@ -21,7 +21,7 @@ private enum Constants {
 
     static var voodooPackage: Package.Dependency {
         .package(url: "https://github.com/VoodooTeam/voodooadn-swift-package.git",
-                 branch: "master")
+                 .upToNextMajor(from: "2.0.0"))
     }
 
     static var mainTarget: PackageDescription.Target {
