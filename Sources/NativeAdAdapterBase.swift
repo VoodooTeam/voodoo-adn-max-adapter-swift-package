@@ -58,6 +58,10 @@ extension AdnSdk.NativeAdUnit {
             builder.starRating = getRawData(of: .starRating)
             builder.mediaView = getUIView(of: .mainVideo) ?? getUIView(of: .mainImage)
             builder.iconView = getUIView(of: .icon)
+            builder.icon = getRawData(of: .icon).flatMap { try? Data(contentsOf: $0) }
+                                                .flatMap { UIImage(data: $0)}
+                                                .map { .init(image: $0)}
+            
             builder.optionsView = getUIView(of: .privacy)
         }
     }
