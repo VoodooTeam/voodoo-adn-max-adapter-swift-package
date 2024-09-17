@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
 	s.static_framework = true
 
 	s.dependency 'VoodooAdn', '= 2.3.43'
-	s.dependency 'AppLovinSDK'
+	s.dependency 'AppLovinSDK', '= 12.5.0'
 end
