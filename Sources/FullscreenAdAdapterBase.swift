@@ -20,11 +20,6 @@ class FullscreenAdAdapterBase {
 
 extension FullscreenAdAdapterBase: FullscreenAdAdapter {
     func loadAd(for parameters: any MAAdapterResponseParameters, completionHandler: @escaping (MAAdapterErrorResult) -> Void) {
-        guard #available(iOS 14, *) else {
-            completionHandler(.failure(MAAdapterError.invalidConfiguration))
-            return
-        }
-
         updatePrivacySettings(parameters)
 
         let identifier = parameters.thirdPartyAdPlacementIdentifier
@@ -36,11 +31,6 @@ extension FullscreenAdAdapterBase: FullscreenAdAdapter {
     }
 
     func showAd(for parameters: any MAAdapterResponseParameters, eventHandler: @escaping (AdUnitShowStateResult) -> Void) {
-        guard #available(iOS 14, *) else {
-            eventHandler(.failure(error: MAAdapterError.invalidConfiguration))
-            return
-        }
-
         // We must ensure that the ad is not expired and can be displayed, else return an error.
 
         let identifier = parameters.thirdPartyAdPlacementIdentifier

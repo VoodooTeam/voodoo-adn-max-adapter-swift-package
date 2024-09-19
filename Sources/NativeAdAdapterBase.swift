@@ -20,11 +20,6 @@ extension NativeAdAdapterBase: NativeAdAdapter {
     func loadAd(for parameters: any MAAdapterResponseParameters,
                 eventsHandler: @escaping (AdnSdk.NativeAdUnit) -> Void,
                 completionHandler: @escaping (Result<MANativeAd, MAAdapterError>) -> Void) {
-        guard #available(iOS 14, *) else {
-            completionHandler(.failure(MAAdapterError.invalidConfiguration))
-            return
-        }
-
         updatePrivacySettings(parameters)
 
         adService.loadAd(.init(adMarkup: parameters.bidResponse,

@@ -5,7 +5,6 @@ import VoodooAdn
 // swiftlint:disable file_types_order
 public extension AdnSdk {
     /// Represents the AppLovin Adn adapater.
-    @available(iOS 13.0, *)
     @objc(ALVoodooAdapter)
     final class AppLovinAdapter: ALMediationAdapter {
         /// Version of the Adn SDK.
@@ -45,7 +44,6 @@ public extension AdnSdk {
 }
 
 // ALMediationAdapter overrides
-@available(iOS 13.0, *)
 public extension AdnSdk.AppLovinAdapter {
     /// Version of the AppLovin Adn adapter.
     override var adapterVersion: String {
@@ -54,10 +52,6 @@ public extension AdnSdk.AppLovinAdapter {
 
     /// Main constructor.
     override func initialize(with parameters: any MAAdapterInitializationParameters) async -> (MAAdapterInitializationStatus, String?) {
-        guard #available(iOS 14, *) else {
-            return (.doesNotApply, nil)
-        }
-
         do {
             try await AdnSdk.initializeSDK(options: .init(mediationName: Constants.mediationName))
             updatePrivacySettings(parameters)
@@ -68,14 +62,12 @@ public extension AdnSdk.AppLovinAdapter {
     }
 }
 
-@available(iOS 13.0, *)
 extension AdnSdk.AppLovinAdapter: MASignalProvider {
     public func collectSignal(with parameters: any MASignalCollectionParameters, andNotify delegate: any MASignalCollectionDelegate) {
         signalProvider.collectSignal(with: parameters, andNotify: delegate)
     }
 }
 
-@available(iOS 13.0, *)
 extension AdnSdk.AppLovinAdapter: MAInterstitialAdapter {
     public func loadInterstitialAd(for parameters: any MAAdapterResponseParameters, andNotify delegate: any MAInterstitialAdapterDelegate) {
         let bridge = MAInterstitialAdapterDelegateBridge(original: delegate)
@@ -92,7 +84,6 @@ extension AdnSdk.AppLovinAdapter: MAInterstitialAdapter {
     }
 }
 
-@available(iOS 13.0, *)
 extension AdnSdk.AppLovinAdapter: MARewardedAdapter {
     public func loadRewardedAd(for parameters: any MAAdapterResponseParameters, andNotify delegate: any MARewardedAdapterDelegate) {
         let bridge = MARewardedAdapterDelegateBridge(original: delegate,
@@ -114,7 +105,6 @@ extension AdnSdk.AppLovinAdapter: MARewardedAdapter {
     }
 }
 
-@available(iOS 13.0, *)
 extension AdnSdk.AppLovinAdapter: MANativeAdAdapter {
     public func loadNativeAd(for parameters: any MAAdapterResponseParameters, andNotify delegate: any MANativeAdAdapterDelegate) {
         let bridge = MANativeAdAdapterDelegateBridge(original: delegate)
