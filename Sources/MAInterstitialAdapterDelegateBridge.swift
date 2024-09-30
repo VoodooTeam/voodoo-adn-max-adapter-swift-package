@@ -1,6 +1,5 @@
 import AppLovinSDK
 import Foundation
-import VoodooAdn
 
 final class MAInterstitialAdapterDelegateBridge {
     weak var original: MAInterstitialAdapterDelegate?

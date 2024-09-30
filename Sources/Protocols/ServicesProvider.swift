@@ -1,6 +1,5 @@
 import AppLovinSDK
 import Foundation
-import VoodooAdn
 
 protocol ServicesProvider {
     var privacyService: PrivacyService { get }

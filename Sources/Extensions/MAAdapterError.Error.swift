@@ -1,6 +1,5 @@
 import AppLovinSDK
 import Foundation
-import VoodooAdn
 
 extension MAAdapterError: Error {
     static func adDisplay(_ errorString: String) -> MAAdapterError {
