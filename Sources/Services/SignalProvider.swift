@@ -11,7 +11,7 @@ class SignalProvider: NSObject, MASignalProvider {
 
     func collectSignal(with parameters: any MASignalCollectionParameters, andNotify delegate: any MASignalCollectionDelegate) {
         privacyService.updatePrivacySettings(parameters)
-        AdnSdk.getBidToken(placement: parameters.adFormat.adnFormat) { token, _ in
+        AdnSdk.getToken(adType: parameters.adFormat.label) { token in
             delegate.didCollectSignal(token)
         }
     }
