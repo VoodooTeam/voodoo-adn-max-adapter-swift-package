@@ -20,8 +20,8 @@ final class MANativeAdAdapterDelegateBridge {
     }
 
     func handleAdEvents(_ adUnit: AdnSdk.NativeAdUnit) {
-        adUnit.observeShowEvents { [weak self] event in
-            self?.handleShowEvent(event)
+        adUnit.observeShowEvents { event in
+            self.handleShowEvent(event)
         }
     }
 
