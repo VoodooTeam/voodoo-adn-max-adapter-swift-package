@@ -11,6 +11,6 @@ struct PrivacyServiceBase: PrivacyService {
         guard let hasUserConsent = settings.userConsent else {
             return
         }
-        AdnSdk.updateHasUserConsent(status: hasUserConsent.boolValue)
+        AdnSdk.updateUserConsent(hasUserConsent.boolValue)
     }
 }

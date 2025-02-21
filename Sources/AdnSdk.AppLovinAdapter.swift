@@ -9,7 +9,7 @@ public extension AdnSdk {
     final class AppLovinAdapter: ALMediationAdapter {
         /// Version of the Adn SDK.
         var SDKVersion: String {
-            AdnSdk.sdkVersion()
+            AdnSdk.version
         }
 
         private var servicesProvider: ServicesProvider = ServicesProviderBase()
