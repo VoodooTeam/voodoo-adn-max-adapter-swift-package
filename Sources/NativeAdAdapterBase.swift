@@ -56,9 +56,6 @@ extension AdnSdk.NativeAdUnit {
             builder.icon = getRawData(of: .icon).flatMap { try? Data(contentsOf: $0) }
                                                 .flatMap { UIImage(data: $0)}
                                                 .map { .init(image: $0)}
-     
-            builder.mediaContentAspectRatio = aspectRatio
-            
             
             builder.optionsView = getUIView(of: .privacy)
         }
