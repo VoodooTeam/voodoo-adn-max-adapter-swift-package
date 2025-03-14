@@ -53,7 +53,8 @@ public extension AdnSdk.AppLovinAdapter {
     /// Main constructor.
     override func initialize(with parameters: any MAAdapterInitializationParameters) async -> (MAAdapterInitializationStatus, String?) {
         do {
-            try await AdnSdk.initializeSDK(options: .init(mediationName: Constants.mediationName))
+
+            try await AdnSdk.initializeSDK(options: .init(mediationName: Constants.mediationName, isMutedInitially: true))
             updatePrivacySettings(parameters)
             return (.initializedSuccess, nil)
         } catch {
