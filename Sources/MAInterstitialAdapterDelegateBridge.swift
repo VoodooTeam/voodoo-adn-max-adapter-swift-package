@@ -34,9 +34,6 @@ final class MAInterstitialAdapterDelegateBridge {
 
         case .failure(let error):
             original?.didFailToDisplayInterstitialAdWithError(error.adapterDisplayAdError)
-        case .impression:
-            return
-            // do nothing since mediation doesn't distinct impression vs displayed ad.
 
         @unknown default:
             return
