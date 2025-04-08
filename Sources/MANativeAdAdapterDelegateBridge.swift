@@ -25,13 +25,16 @@ final class MANativeAdAdapterDelegateBridge {
         }
     }
 
-    private func handleShowEvent(_ event: AdnSdk.AdUnitShowState) {
+    private func handleShowEvent(_ event: AdnSdk.AdNativeShowState) {
         switch event {
         case .click:
             original?.didClickNativeAd()
 
         case .started:
             original?.didDisplayNativeAd(withExtraInfo: nil)
+        case .impression:
+            return
+            // do nothing since mediation doesn't distinct impression vs displayed ad.
 
         default:
             break
