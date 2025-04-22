@@ -16,12 +16,12 @@ private enum Constants {
         .product(name: "AppLovinSDK", package: "AppLovin-MAX-Swift-Package")
     }
     static var appLovinDependency: Package.Dependency {
-        .package(url: "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git", .upToNextMajor(from: "13.0.0"))
+        .package(url: "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git", .upToNextMajor(from: "13.0"))
     }
 
     static var voodooPackage: Package.Dependency {
         .package(url: "https://github.com/VoodooTeam/voodooadn-swift-package.git",
-                 .upToNextMajor(from: "3.0.0"))
+                 .upToNextMajor(from: "2.0.0"))
     }
 
     static var mainTarget: PackageDescription.Target {

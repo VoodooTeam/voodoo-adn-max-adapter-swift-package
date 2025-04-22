@@ -42,12 +42,7 @@ final class MARewardedAdapterDelegateBridge {
 
         case .failure(let error):
             original?.didFailToDisplayRewardedAdWithError(error.adapterDisplayAdError)
-        
-        case .impression:
-            // do nothing since mediation doesn't distinct impression vs displayed ad.
-            return
-            
-        
+
         @unknown default:
             return
         }

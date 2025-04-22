@@ -9,7 +9,7 @@ public extension AdnSdk {
     final class AppLovinAdapter: ALMediationAdapter {
         /// Version of the Adn SDK.
         var SDKVersion: String {
-            AdnSdk.version
+            AdnSdk.sdkVersion()
         }
 
         private var servicesProvider: ServicesProvider = ServicesProviderBase()
@@ -53,8 +53,7 @@ public extension AdnSdk.AppLovinAdapter {
     /// Main constructor.
     override func initialize(with parameters: any MAAdapterInitializationParameters) async -> (MAAdapterInitializationStatus, String?) {
         do {
-
-            try await AdnSdk.initializeSDK(options: .init(mediationName: Constants.mediationName, isMutedInitially: true))
+            try await AdnSdk.initializeSDK(options: .init(mediationName: Constants.mediationName))
             updatePrivacySettings(parameters)
             return (.initializedSuccess, nil)
         } catch {

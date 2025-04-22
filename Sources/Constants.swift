@@ -4,5 +4,5 @@ enum Constants {
     static let adDisplayErrorCode: Int = -4_205
     static let minimumSdkVersion: Int = 11_020_199
     static let mediationName = "maxads"
-    static let adapterVersion = "3.4.4.1.0"
+    static let adapterVersion = "2.4.9.1.0"
 }
