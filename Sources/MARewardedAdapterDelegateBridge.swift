@@ -28,7 +28,7 @@ final class MARewardedAdapterDelegateBridge {
         case .click:
             original?.didClickRewardedAd()
 
-        case .started:
+        case .impression:
             original?.didDisplayRewardedAd()
 
         case .dismissed:
@@ -43,7 +43,7 @@ final class MARewardedAdapterDelegateBridge {
         case .failure(let error):
             original?.didFailToDisplayRewardedAdWithError(error.adapterDisplayAdError)
         
-        case .impression:
+        case .started:
             // do nothing since mediation doesn't distinct impression vs displayed ad.
             return
             

@@ -30,9 +30,10 @@ final class MANativeAdAdapterDelegateBridge {
         case .click:
             original?.didClickNativeAd()
 
-        case .started:
-            original?.didDisplayNativeAd(withExtraInfo: nil)
         case .impression:
+            original?.didDisplayNativeAd(withExtraInfo: nil)
+
+        case .started:
             return
             // do nothing since mediation doesn't distinct impression vs displayed ad.
 

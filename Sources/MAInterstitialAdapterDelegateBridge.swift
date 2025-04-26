@@ -23,7 +23,7 @@ final class MAInterstitialAdapterDelegateBridge {
         case .click:
             original?.didClickInterstitialAd()
 
-        case .started:
+        case .impression:
             original?.didDisplayInterstitialAd()
 
         case .dismissed:
@@ -34,7 +34,8 @@ final class MAInterstitialAdapterDelegateBridge {
 
         case .failure(let error):
             original?.didFailToDisplayInterstitialAdWithError(error.adapterDisplayAdError)
-        case .impression:
+
+        case .started:
             return
             // do nothing since mediation doesn't distinct impression vs displayed ad.
 
