@@ -3,7 +3,7 @@ import Foundation
 import VoodooAdn
 
 typealias MAAdapterErrorResult = Result<Void, MAAdapterError>
-typealias AdUnitShowStateResult = AdnSdk.AdUnitShowState
+typealias AdUnitShowStateResult = AdnSdk.AdFullscreenShowState
 
 protocol FullscreenAdAdapter {
     func loadAd(for parameters: any MAAdapterResponseParameters, completionHandler: @escaping (MAAdapterErrorResult) -> Void)

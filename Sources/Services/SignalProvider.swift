@@ -18,19 +18,19 @@ class SignalProvider: NSObject, MASignalProvider {
 }
 
 private extension MAAdFormat {
-    var adnFormat: AdnPlacementType {
+    var adnFormat: AdnSdk.Placement {
         switch self {
-        case .banner:
-                .banner
-
         case .interstitial:
                 .interstitial
 
         case .rewarded:
                 .rewarded
 
+        case .native:
+                .native
+
         default:
-                .none
+                .unknown
         }
     }
 }

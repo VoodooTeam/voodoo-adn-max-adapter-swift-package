@@ -8,9 +8,14 @@ struct PrivacyServiceBase: PrivacyService {
     }
 
     private func updateUserConsent(_ settings: MAAdapterParameters) {
-        guard let hasUserConsent = settings.userConsent else {
-            return
+    
+        if let consent = settings.userConsent {
+            AdnSdk.setUserGDPRConsent(consent.boolValue)
         }
-        AdnSdk.updateHasUserConsent(status: hasUserConsent.boolValue)
+        
+        if let doNotSell = settings.doNotSell {
+            AdnSdk.setDoNotSell(doNotSell.boolValue)
+        }
+        
     }
 }
