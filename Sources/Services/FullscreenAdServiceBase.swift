@@ -9,7 +9,7 @@ struct FullScreenAdServiceBase: FullScreenAdService {
     }
 
     func loadAd(_ options: AdServiceLoadOptions, completion: @escaping (Result<any AdnSdk.AdUnit, any Error>) -> Void) {
-        AdnSdk.loadFullScreenAd(.init(placement: placement, adMarkup: options.adMarkup)) { result in
+        AdnSdk.loadFullScreenAd(.init(placement: placement, adMarkup: options.adMarkup, configuration: nil)) { result in
             completion(result)
         }
     }
