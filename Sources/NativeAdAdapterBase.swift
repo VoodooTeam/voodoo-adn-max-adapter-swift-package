@@ -34,7 +34,9 @@ extension NativeAdAdapterBase: NativeAdAdapter {
         switch result {
         case .success(let adUnit):
             eventsHandler(adUnit)
-            completionHandler(.success(adUnit.MANativeAd))
+            Task { @MainActor in
+                completionHandler(.success(adUnit.MANativeAd))
+            }
 
         case .failure(let error):
             completionHandler(.failure(error.adapterLoadAdError))
@@ -44,7 +46,7 @@ extension NativeAdAdapterBase: NativeAdAdapter {
 
 extension AdnSdk.NativeAdUnit {
     // swiftlint:disable closure_body_length
-    var MANativeAd: ADNMANativeAd {
+    @MainActor var MANativeAd: ADNMANativeAd {
         .init(container: self, format: .native) { builder in
             builder.title = getRawData(of: .title)
             builder.advertiser = getRawData(of: .advertiser)
