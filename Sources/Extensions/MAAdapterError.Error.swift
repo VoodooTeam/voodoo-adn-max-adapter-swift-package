@@ -1,7 +1,7 @@
 import AppLovinSDK
 import Foundation
 
-extension MAAdapterError: Swift.Error {
+extension MAAdapterError: Error {
     static func adDisplay(_ errorString: String) -> MAAdapterError {
         MAAdapterError(code: Constants.adDisplayErrorCode, errorString: errorString)
     }
