@@ -14,32 +14,21 @@ public extension AdnSdk {
 
         private var servicesProvider: ServicesProvider = ServicesProviderBase()
 
-        private var privacyService: PrivacyService {
-            servicesProvider.privacyService
-        }
-
         private var signalProvider: MASignalProvider {
             servicesProvider.signalProvider
         }
 
         private lazy var interstitialAdAdapter: FullscreenAdAdapter = FullscreenAdAdapterBase(
             adStorage: .init(queue: .init(label: "AdnSdk.AppLovin.InterstitialAdStorage")),
-            privacyService: servicesProvider.privacyService,
             adService: servicesProvider.interstitialAdService
         )
         private lazy var rewardedAdAdapter: FullscreenAdAdapter = FullscreenAdAdapterBase(
             adStorage: .init(queue: .init(label: "AdnSdk.AppLovin.RewardedAdStorage")),
-            privacyService: servicesProvider.privacyService,
             adService: servicesProvider.rewardedAdService
         )
         private lazy var nativeAdAdapter: NativeAdAdapter = NativeAdAdapterBase(
-            privacyService: servicesProvider.privacyService,
             adService: servicesProvider.nativeAdService
         )
-
-        private func updatePrivacySettings(_ settings: any MAAdapterParameters) {
-            privacyService.updatePrivacySettings(settings)
-        }
     }
 }
 
@@ -54,7 +43,6 @@ public extension AdnSdk.AppLovinAdapter {
     override func initialize(with parameters: any MAAdapterInitializationParameters) async -> (MAAdapterInitializationStatus, String?) {
         do {
             try await AdnSdk.initialize(options: .init(mediationName: Constants.mediationName, isMutedInitially: true))
-            updatePrivacySettings(parameters)
             return (.initializedSuccess, nil)
         } catch {
             return (.initializedFailure, error.localizedDescription)
