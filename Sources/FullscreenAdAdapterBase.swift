@@ -4,16 +4,23 @@ import VoodooAdn
 
 class FullscreenAdAdapterBase {
     private var adStorage: AdUnitStorage
+    private let privacyService: PrivacyService
     private let adService: FullScreenAdService
 
-    init(adStorage: AdUnitStorage, adService: FullScreenAdService) {
+    init(adStorage: AdUnitStorage, privacyService: PrivacyService, adService: FullScreenAdService) {
         self.adStorage = adStorage
+        self.privacyService = privacyService
         self.adService = adService
+    }
+
+    private func updatePrivacySettings(_ settings: any MAAdapterParameters) {
+        privacyService.updatePrivacySettings(settings)
     }
 }
 
 extension FullscreenAdAdapterBase: FullscreenAdAdapter {
     func loadAd(for parameters: any MAAdapterResponseParameters, completionHandler: @escaping (MAAdapterErrorResult) -> Void) {
+        updatePrivacySettings(parameters)
 
         let identifier = parameters.thirdPartyAdPlacementIdentifier
         adStorage.removeAdUnitWithIdentifier(identifier)
