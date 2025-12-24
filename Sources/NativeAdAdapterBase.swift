@@ -3,16 +3,10 @@ import Foundation
 import VoodooAdn
 
 class NativeAdAdapterBase {
-    private let privacyService: PrivacyService
     private let adService: NativeAdService
 
-    init(privacyService: PrivacyService, adService: NativeAdService) {
-        self.privacyService = privacyService
+    init(adService: NativeAdService) {
         self.adService = adService
-    }
-
-    private func updatePrivacySettings(_ settings: any MAAdapterParameters) {
-        privacyService.updatePrivacySettings(settings)
     }
 }
 
@@ -20,7 +14,6 @@ extension NativeAdAdapterBase: NativeAdAdapter {
     func loadAd(for parameters: any MAAdapterResponseParameters,
                 eventsHandler: @escaping (AdnSdk.NativeAdUnit) -> Void,
                 completionHandler: @escaping (Result<MANativeAd, MAAdapterError>) -> Void) {
-        updatePrivacySettings(parameters)
 
         adService.loadAd(.init(adMarkup: parameters.bidResponse,
                                thirdPartyAdPlacementIdentifier: parameters.thirdPartyAdPlacementIdentifier)) { [weak self] result in
